@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
+import APIurl from '../config';
 const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:8000/finsta-api/entries')
+		fetch(`${APIurl}entries`)
 			.then((res) => res.json())
 			.then((res) => setEntries(res))
 			.then(console.log(entries))
