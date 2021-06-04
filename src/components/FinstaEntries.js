@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import APIurl from '../config';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Card, Row, Column, Image } from 'react-bootstrap';
 const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
@@ -12,20 +14,20 @@ const FinstaEntries = () => {
 	}, []);
 
 	return (
-		<div>
+		<Container>
 			<h1>Hello from React!</h1>
-			<div className='entries-list'>
+			<Container className='entries-list'>
 				{entries.map((entry) => {
 					return (
-						<div>
-							<h2>{entry.title}</h2>
-							<p>{entry.caption}</p>
-							<img src={entry.image} alt={entry.title} height='400px' />
-						</div>
+						<Card style={{ width: '32rem' }}>
+							<Image fluid src={entry.image} alt={entry.title} />
+							<Card.Title>{entry.title}</Card.Title>
+							<Card.Body>{entry.caption}</Card.Body>
+						</Card>
 					);
 				})}
-			</div>
-		</div>
+			</Container>
+		</Container>
 	);
 };
 

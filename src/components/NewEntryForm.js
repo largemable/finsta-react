@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import APIurl from '../config';
+import {
+	Form,
+	Button,
+	Container,
+	Row,
+	Col,
+	FormControl,
+} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const NewEntryForm = () => {
 	const [image, setImage] = useState({});
 
@@ -40,16 +49,16 @@ const NewEntryForm = () => {
 	};
 
 	return (
-		<div className='content landing'>
-			<form onSubmit={setImageAction}>
-				<input type='file' name='image' onChange={uploadImage} />
-				<br />
-				<br />
-				<button type='submit' name='upload'>
-					Upload
-				</button>
-			</form>
-		</div>
+		<Container>
+			<Form inline className='content landing'>
+				<Form.Group onSubmit={setImageAction}>
+					<Form.File name='image' onChange={uploadImage} />
+					<Button type='submit' name='upload'>
+						Upload
+					</Button>
+				</Form.Group>
+			</Form>
+		</Container>
 	);
 };
 
