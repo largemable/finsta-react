@@ -1,59 +1,62 @@
 import React, { useState } from 'react';
 import APIurl from '../config';
-import {
-	Form,
-	Button,
-	Container,
-	Row,
-	Col,
-	FormControl,
-} from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 const NewEntryForm = () => {
-	const [image, setImage] = useState({});
+	const [newEntry, setNewEntry] = useState({
+		title: '',
+		caption: '',
+		user: '1',
+		image: null,
+	});
 
-	const uploadImage = (e) => {
-		setImage({
-			/* contains the preview, if you want to show the Image to the user
-           you can access it with this.state.currentImage
-       */
-			imagePreview: URL.createObjectURL(e.target.files[0]),
-			/* this contains the file we want to send */
-			imageAsFile: e.target.files[0],
-		});
+	const handleChange = (e) => {
+		e.preventDefault();
+		setNewEntry({ ...newEntry, [e.target.name]: e.target.value });
 	};
-
-	const setImageAction = async (event) => {
-		event.preventDefault();
-
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		const formData = new FormData();
-		formData.append('file', image.ImageAsFile);
-
-		console.log(image.ImageAsFile);
-
-		for (var key of formData.entries()) {
-			console.log(key[0] + ', ' + key[1]);
-		}
-
-		const data = await fetch(`${APIurl}entries/`, {
-			method: 'post',
-			headers: { 'Content-Type': 'multipart/form-data' },
-			body: formData,
-		});
-		const uploadedImage = await data.json();
-		if (uploadedImage) {
-			console.log('Successfully uploaded image');
-		} else {
-			console.log('Error Found');
-		}
+		formData.append('title', newEntry.title);
+		formData.append('caption', newEntry.caption);
+		formData.append('user', newEntry.user);
+		formData.append('image', newEntry.image);
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data',
+			},
+		};
+		axios.post(`${APIurl}entries/`, formData, config);
 	};
 
+	const handleImageChange = (e) => {
+		e.preventDefault();
+
+		setNewEntry({ ...newEntry, [e.target.name]: e.target.files[0] });
+	};
 	return (
 		<Container>
-			<Form inline className='content landing'>
-				<Form.Group onSubmit={setImageAction}>
-					<Form.File name='image' onChange={uploadImage} />
-					<Button type='submit' name='upload'>
+			<Form inline className='content landing' onSubmit={handleSubmit}>
+				<Form.Group>
+					<Form.File name='image' onChange={handleImageChange} />
+					<Form.Label>Title</Form.Label>
+					<Form.Control
+						type='input'
+						name='title'
+						placeholder='Enter Title'
+						value={newEntry.title}
+						onChange={handleChange}
+					/>
+					<Form.Label>Caption</Form.Label>
+					<Form.Control
+						type='input'
+						name='caption'
+						placeholder='Caption'
+						value={newEntry.caption}
+						onChange={handleChange}
+					/>
+					<Button type='submit' name='Upload'>
 						Upload
 					</Button>
 				</Form.Group>
@@ -65,3 +68,5 @@ const NewEntryForm = () => {
 export default NewEntryForm;
 
 // https://stackoverflow.com/questions/61700261/upload-image-request-from-react
+
+// https://stackoverflow.com/questions/41878838/how-do-i-set-multipart-in-axios-with-react
