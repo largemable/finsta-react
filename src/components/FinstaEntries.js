@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import APIurl from '../config';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Card, Row, Column, Image } from 'react-bootstrap';
+import { Container, Card, Image } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const FinstaEntries = () => {
@@ -16,14 +16,18 @@ const FinstaEntries = () => {
 	}, []);
 
 	return (
-		<Container>
-			<h1>Hello from React!</h1>
+		<Container fluid>
 			<Container className='entries-list'>
 				<InfiniteScroll dataLength={entries.length} height={800}>
 					{entries.map((entry) => {
 						return (
-							<Card style={{ width: '32rem', margin: '0 auto' }}>
-								<Image fluid src={entry.image} alt={entry.title} />
+							<Card key={entry.id} className='entry-card'>
+								<Image
+									fluid
+									src={entry.image}
+									alt={entry.title}
+									className='entry-image'
+								/>
 								<Card.Title>{entry.title}</Card.Title>
 								<Card.Body>{entry.caption}</Card.Body>
 							</Card>
