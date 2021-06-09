@@ -20,18 +20,35 @@ const Header = () => {
 			{isAuth === true ? (
 				<Fragment>
 					{' '}
-					<Link to='/dashboard'>
+					<Link
+						style={{ textDecoration: 'none' }}
+						className='hvr-sink'
+						to='/dashboard'>
 						<h1>Finsta</h1>
 					</Link>
 					<Col>
-						<Link to='/logout'>Logout</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/upload'>
+							New Entry
+						</Link>
 					</Col>
 					<Col>
-						<Link to='/upload'>New Entry</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/logout'>
+							Logout
+						</Link>
 					</Col>
-					<br />
 					<Col>
-						<Link to='/about'>About</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/about'>
+							About
+						</Link>
 					</Col>
 				</Fragment>
 			) : (
@@ -39,13 +56,28 @@ const Header = () => {
 					{' '}
 					<h1>Finsta</h1>
 					<Col>
-						<Link to='/login'>Login</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/login'>
+							Login
+						</Link>
 					</Col>
 					<Col>
-						<Link to='/signup'>Signup</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/signup'>
+							Signup
+						</Link>
 					</Col>
 					<Col>
-						<Link to='/about'>About</Link>
+						<Link
+							style={{ textDecoration: 'none' }}
+							className='hvr-sink'
+							to='/about'>
+							About
+						</Link>
 					</Col>
 				</Fragment>
 			)}

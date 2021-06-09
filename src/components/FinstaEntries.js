@@ -8,10 +8,14 @@ const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
 	useEffect(() => {
-		fetch(`${APIurl}entries`)
+		fetch(`${APIurl}entries`, {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Token ${localStorage.getItem('token')}`,
+			},
+		})
 			.then((res) => res.json())
 			.then((res) => setEntries(res))
-			.then(console.log(entries))
 			.catch(console.error);
 	}, []);
 
@@ -19,20 +23,24 @@ const FinstaEntries = () => {
 		<Container fluid>
 			<Container className='entries-list'>
 				<InfiniteScroll dataLength={entries.length} height={800}>
-					{entries.map((entry) => {
-						return (
-							<Card key={entry.id} className='entry-card'>
-								<Image
-									fluid
-									src={entry.image}
-									alt={entry.title}
-									className='entry-image'
-								/>
-								<Card.Title>{entry.title}</Card.Title>
-								<Card.Body>{entry.caption}</Card.Body>
-							</Card>
-						);
-					})}
+					{entries
+						.sort(function (a, b) {
+							return b.id - a.id;
+						})
+						.map((entry) => {
+							return (
+								<Card key={entry.id} className='entry-card'>
+									<Image
+										fluid
+										src={entry.image}
+										alt={entry.title}
+										className='entry-image'
+									/>
+									<Card.Title>{entry.title}</Card.Title>
+									<Card.Body>{entry.caption}</Card.Body>
+								</Card>
+							);
+						})}
 				</InfiniteScroll>
 			</Container>
 		</Container>

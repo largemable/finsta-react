@@ -7,7 +7,6 @@ const NewEntryForm = () => {
 	const [newEntry, setNewEntry] = useState({
 		title: '',
 		caption: '',
-		user: '1',
 		image: null,
 	});
 
@@ -25,9 +24,13 @@ const NewEntryForm = () => {
 		const config = {
 			headers: {
 				'content-type': 'multipart/form-data',
+
+				Authorization: `Token ${localStorage.getItem('token')}`,
 			},
 		};
-		axios.post(`${APIurl}entries/`, formData, config);
+		axios
+			.post(`${APIurl}entries/`, formData, config)
+			.then(window.location.replace('http://localhost:3000/dashboard'));
 	};
 
 	const handleImageChange = (e) => {
@@ -36,7 +39,7 @@ const NewEntryForm = () => {
 		setNewEntry({ ...newEntry, [e.target.name]: e.target.files[0] });
 	};
 	return (
-		<Container>
+		<Container className='entry-form'>
 			<Form className='content landing' onSubmit={handleSubmit}>
 				<Form.Group>
 					<Form.File name='image' onChange={handleImageChange} />

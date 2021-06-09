@@ -43,3 +43,5 @@ function App() {
 }
 
 export default App;
+
+// https://blog.devgenius.io/django-react-authentication-part-2-ea626688165e
