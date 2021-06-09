@@ -37,7 +37,7 @@ const NewEntryForm = () => {
 	};
 	return (
 		<Container>
-			<Form inline className='content landing' onSubmit={handleSubmit}>
+			<Form className='content landing' onSubmit={handleSubmit}>
 				<Form.Group>
 					<Form.File name='image' onChange={handleImageChange} />
 					<Form.Label>Title</Form.Label>
@@ -50,7 +50,8 @@ const NewEntryForm = () => {
 					/>
 					<Form.Label>Caption</Form.Label>
 					<Form.Control
-						type='input'
+						as='textarea'
+						rows={4}
 						name='caption'
 						placeholder='Caption'
 						value={newEntry.caption}
