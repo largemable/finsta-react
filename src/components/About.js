@@ -1,6 +1,5 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
-import githubIcon from '@iconify-icons/logos/github-icon';
+
 const About = () => {
 	return (
 		<div>
@@ -23,9 +22,8 @@ const About = () => {
 					enjoy and take a look at my github if you'd like to see my other
 					projects!
 				</p>
-				<a href='https://github.com/largemable'>
-					<Icon icon={githubIcon} height='75px' />
-				</a>
+
+				<a href='https://github.com/largemable'>Github</a>
 			</div>
 		</div>
 	);
