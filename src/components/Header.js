@@ -13,10 +13,6 @@ const Header = () => {
 
 	return (
 		<Navbar sticky='top' className='header'>
-			{/* <Link to='/dashboard'>
-				<h1>Finsta</h1>
-			</Link> */}
-
 			{isAuth === true ? (
 				<Fragment>
 					{' '}

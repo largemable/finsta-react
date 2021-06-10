@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import APIurl from '../config';
 const SignUp = () => {
 	const [email, setEmail] = useState('');
 	const [password1, setPassword1] = useState('');
@@ -24,7 +24,7 @@ const SignUp = () => {
 			password2: password2,
 		};
 
-		fetch('http://127.0.0.1:8000/users/auth/register/', {
+		fetch(`${APIurl}/users/auth/register/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

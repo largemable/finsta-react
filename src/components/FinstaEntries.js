@@ -8,7 +8,7 @@ const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
 	useEffect(() => {
-		fetch(`${APIurl}entries`, {
+		fetch(`${APIurl}finsta-api/entries`, {
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Token ${localStorage.getItem('token')}`,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import APIurl from '../config';
 const LogIn = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -22,7 +22,7 @@ const LogIn = () => {
 			password: password,
 		};
 
-		fetch('http://127.0.0.1:8000/users/auth/login/', {
+		fetch(`${APIurl}users/auth/login/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const LogIn = () => {
 				if (data.key) {
 					localStorage.clear();
 					localStorage.setItem('token', data.key);
-					window.location.replace('http://localhost:3000/dashboard');
+					window.location.replace(`http://localhost:3000/dashboard`);
 				} else {
 					setEmail('');
 					setPassword('');

@@ -3,7 +3,9 @@ import APIurl from '../config';
 import { Form, Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 const NewEntryForm = () => {
+	const history = useHistory();
 	const [newEntry, setNewEntry] = useState({
 		title: '',
 		caption: '',
@@ -28,9 +30,7 @@ const NewEntryForm = () => {
 				Authorization: `Token ${localStorage.getItem('token')}`,
 			},
 		};
-		axios
-			.post(`${APIurl}entries/`, formData, config)
-			.then(window.location.replace('http://localhost:3000/dashboard'));
+		axios.post(`${APIurl}finsta-api/entries/`, formData, config).then();
 	};
 
 	const handleImageChange = (e) => {

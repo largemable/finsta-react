@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-
+import APIurl from '../config';
 const LogOut = () => {
 	const [loading, setLoading] = useState(true);
 
@@ -14,7 +14,7 @@ const LogOut = () => {
 	const handleLogout = (e) => {
 		e.preventDefault();
 
-		fetch('http://127.0.0.1:8000/users/auth/logout/', {
+		fetch(`${APIurl}users/auth/logout/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

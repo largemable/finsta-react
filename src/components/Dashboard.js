@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-
+import APIurl from '../config';
 const Dashboard = () => {
 	const [userEmail, setUserEmail] = useState('');
 	const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ const Dashboard = () => {
 		if (localStorage.getItem('token') === null) {
 			window.location.replace('http://localhost:3000/login');
 		} else {
-			fetch('http://127.0.0.1:8000/api/v1/users/auth/user/', {
+			fetch(`${APIurl}users/auth/user/`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
