@@ -7,8 +7,9 @@ const LogIn = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		const url = 'https://finsta2021.herokuapp.com/';
 		if (localStorage.getItem('token') !== null) {
-			window.location.replace('http://localhost:3000/dashboard');
+			window.location.replace(`${url}dashboard`);
 		} else {
 			setLoading(false);
 		}
@@ -34,7 +35,7 @@ const LogIn = () => {
 				if (data.key) {
 					localStorage.clear();
 					localStorage.setItem('token', data.key);
-					window.location.replace(`http://localhost:3000/dashboard`);
+					window.location.replace(`${url}dashboard`);
 				} else {
 					setEmail('');
 					setPassword('');

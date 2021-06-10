@@ -1,12 +1,14 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import APIurl from '../config';
+
 const Dashboard = () => {
+	const url = 'https://finsta2021.herokuapp.com/';
 	const [userEmail, setUserEmail] = useState('');
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (localStorage.getItem('token') === null) {
-			window.location.replace('http://localhost:3000/login');
+			window.location.replace(`${url}login`);
 		} else {
 			fetch(`${APIurl}users/auth/user/`, {
 				method: 'GET',

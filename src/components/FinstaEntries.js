@@ -3,7 +3,6 @@ import APIurl from '../config';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Card, Image } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
 const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
