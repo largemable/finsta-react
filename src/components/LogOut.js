@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import APIurl from '../config';
 const LogOut = () => {
+	const url = 'https://finsta2021.herokuapp.com/';
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (localStorage.getItem('token') == null) {
-			window.location.replace('http://localhost:3000/login');
+			window.location.replace(`${url}login`);
 		} else {
 			setLoading(false);
 		}
@@ -25,7 +26,7 @@ const LogOut = () => {
 			.then((data) => {
 				console.log(data);
 				localStorage.clear();
-				window.location.replace('http://localhost:3000/login');
+				window.location.replace(`${url}login`);
 			});
 	};
 

@@ -3,7 +3,6 @@ import APIurl from '../config';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Card, Image } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
 const FinstaEntries = () => {
 	const [entries, setEntries] = useState([]);
 
@@ -18,7 +17,15 @@ const FinstaEntries = () => {
 			.then((res) => setEntries(res))
 			.catch(console.error);
 	}, []);
-
+	console.log(entries);
+	if (entries.length === 0) {
+		return (
+			<div>
+				<h1>Welcome!</h1>
+				<h2>Select new entry to make your first post on Finsta!</h2>
+			</div>
+		);
+	}
 	return (
 		<Container fluid>
 			<Container className='entries-list'>

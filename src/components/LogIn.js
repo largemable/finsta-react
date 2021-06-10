@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import APIurl from '../config';
+
 const LogIn = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const url = 'https://finsta2021.herokuapp.com/';
 
 	useEffect(() => {
 		if (localStorage.getItem('token') !== null) {
-			window.location.replace('http://localhost:3000/dashboard');
+			window.location.replace(`${url}dashboard`);
 		} else {
 			setLoading(false);
 		}
@@ -34,7 +36,7 @@ const LogIn = () => {
 				if (data.key) {
 					localStorage.clear();
 					localStorage.setItem('token', data.key);
-					window.location.replace(`http://localhost:3000/dashboard`);
+					window.location.replace(`${url}dashboard`);
 				} else {
 					setEmail('');
 					setPassword('');
