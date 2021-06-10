@@ -17,7 +17,14 @@ const FinstaEntries = () => {
 			.then((res) => setEntries(res))
 			.catch(console.error);
 	}, []);
-
+	if (!entries) {
+		return (
+			<div>
+				<h1>Welcome!</h1>
+				<h2>Select new entry to make your first post on Finsta!</h2>
+			</div>
+		);
+	}
 	return (
 		<Container fluid>
 			<Container className='entries-list'>
