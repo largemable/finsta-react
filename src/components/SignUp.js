@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import APIurl from '../config';
 const SignUp = () => {
 	const url = 'https://finsta2021.herokuapp.com/';
+
 	const [email, setEmail] = useState('');
 	const [password1, setPassword1] = useState('');
 	const [password2, setPassword2] = useState('');
@@ -10,7 +11,7 @@ const SignUp = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem('token') !== null) {
-			window.location.replace('http://localhost:3000/dashboard');
+			window.location.replace(`${url}dashboard`);
 		} else {
 			setLoading(false);
 		}
