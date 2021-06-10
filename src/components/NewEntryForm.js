@@ -30,7 +30,9 @@ const NewEntryForm = () => {
 				Authorization: `Token ${localStorage.getItem('token')}`,
 			},
 		};
-		axios.post(`${APIurl}finsta-api/entries/`, formData, config).then();
+		axios.post(`${APIurl}finsta-api/entries/`, formData, config).then(() => {
+			history.push('/dashboard');
+		});
 	};
 
 	const handleImageChange = (e) => {
