@@ -76,6 +76,10 @@ a:before {
 .entry-form {
 	margin-top: 4em;
 }
+.profpic {
+	border-radius: 50%;
+	max-height: 100px;
+}
 @media (min-width: 768px) {
 	.entry-card {
 		display: flex;
