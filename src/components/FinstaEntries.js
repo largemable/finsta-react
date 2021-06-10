@@ -17,7 +17,8 @@ const FinstaEntries = () => {
 			.then((res) => setEntries(res))
 			.catch(console.error);
 	}, []);
-	if (!entries) {
+	console.log(entries);
+	if (entries) {
 		return (
 			<div>
 				<h1>Welcome!</h1>
