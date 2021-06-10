@@ -18,14 +18,14 @@ const FinstaEntries = () => {
 			.catch(console.error);
 	}, []);
 	console.log(entries);
-	// if (entries) {
-	// 	return (
-	// 		<div>
-	// 			<h1>Welcome!</h1>
-	// 			<h2>Select new entry to make your first post on Finsta!</h2>
-	// 		</div>
-	// 	);
-	// }
+	if (entries.length === 0) {
+		return (
+			<div>
+				<h1>Welcome!</h1>
+				<h2>Select new entry to make your first post on Finsta!</h2>
+			</div>
+		);
+	}
 	return (
 		<Container fluid>
 			<Container className='entries-list'>
