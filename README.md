@@ -17,7 +17,6 @@ Finsta is a media upload app where users can document and view their lives throu
 
 - React
 - Bootstrap
-- 
 
 ## Contributing
 Pull requests are welcome!
