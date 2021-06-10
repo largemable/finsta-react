@@ -7,7 +7,7 @@ import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import LogOut from './components/LogOut';
 import React from 'react';
-import { BrowserRouter as Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
