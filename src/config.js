@@ -1,2 +1,2 @@
-const APIurl = 'http://localhost:8000/finsta-api/';
+const APIurl = 'https://shielded-beach-36419.herokuapp.com/';
 export default APIurl;
