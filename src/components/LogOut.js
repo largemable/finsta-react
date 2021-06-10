@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import APIurl from '../config';
 const LogOut = () => {
+	const url = 'https://finsta2021.herokuapp.com/';
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {

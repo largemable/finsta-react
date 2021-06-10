@@ -5,9 +5,9 @@ const LogIn = () => {
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const url = 'https://finsta2021.herokuapp.com/';
 
 	useEffect(() => {
-		const url = 'https://finsta2021.herokuapp.com/';
 		if (localStorage.getItem('token') !== null) {
 			window.location.replace(`${url}dashboard`);
 		} else {
