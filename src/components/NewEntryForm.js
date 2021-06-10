@@ -3,9 +3,8 @@ import APIurl from '../config';
 import { Form, Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-const NewEntryForm = () => {
-	const history = useHistory();
+
+const NewEntryForm = ({ history }) => {
 	const [newEntry, setNewEntry] = useState({
 		title: '',
 		caption: '',
@@ -18,11 +17,11 @@ const NewEntryForm = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const formData = new FormData();
-		formData.append('title', newEntry.title);
-		formData.append('caption', newEntry.caption);
-		formData.append('user', newEntry.user);
-		formData.append('image', newEntry.image);
+		const formData = new FormData(e.target);
+		// formData.append('title', newEntry.title);
+		// formData.append('caption', newEntry.caption);
+		// formData.append('user', newEntry.user);
+		// formData.append('image', newEntry.image);
 		const config = {
 			headers: {
 				'content-type': 'multipart/form-data',

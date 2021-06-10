@@ -19,24 +19,17 @@ function App() {
 					<h1>Welcome to Finsta!</h1>
 					<h2>the social-less media app</h2>
 				</Route>
-				<Route path='/upload'>
-					<NewEntryForm />
-				</Route>
-				<Route path='/dashboard'>
-					<FinstaEntries />
-				</Route>
-				<Route exact path='/about'>
-					<About />
-				</Route>
-				<Route path='/login'>
-					<LogIn />
-				</Route>
-				<Route path='/signup'>
-					<SignUp />
-				</Route>
-				<Route path='/logout'>
-					<LogOut />
-				</Route>
+				<Route path='/upload' component={NewEntryForm} />
+
+				<Route path='/dashboard' component={FinstaEntries} />
+
+				<Route exact path='/about' component={About} />
+
+				<Route path='/login' component={LogIn} />
+
+				<Route path='/signup' component={SignUp} />
+
+				<Route path='/logout' component={LogOut} />
 			</Switch>
 		</div>
 	);
