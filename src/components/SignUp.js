@@ -26,7 +26,7 @@ const SignUp = () => {
 			password2: password2,
 		};
 
-		fetch(`${APIurl}/users/auth/register/`, {
+		fetch(`${APIurl}users/auth/register/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
